@@ -12,7 +12,7 @@
 ## BibTeX
 
 ```bibtex
-@artitle{zhu2021lowrankgan,
+@article{zhu2021lowrankgan,
   title     = {Low-Rank Subspaces in GANs},
   author    = {Zhu, Jiapeng and Feng, Ruili and Shen, Yujun and Zhao, Deli and Zha, zhengjun and Zhou, Jingren and Chen, Qifeng},
   journal   = {Arxiv link},
