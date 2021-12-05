@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- === Header Starts === -->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>LowRankGAN</title>
+
+  <link href="./assets/bootstrap.min.css" rel="stylesheet">
+  <link href="./assets/font.css" rel="stylesheet" type="text/css">
+  <link href="./assets/style.css" rel="stylesheet" type="text/css">
+</head>
+<!-- === Header Ends === -->
+
+
+<body>
+
+
+<!-- === Home Section Starts === -->
+<div class="section">
+  <!-- === Title Starts === -->
+  <div class="header">
+    <div class="title", style="padding-top: 25pt;">
+      Low-Rank Subspaces in GANs
+    </div>
+  </div>
+  <!-- === Title Ends === -->
+  <div class="author">
+    <a href="https://zhujiapeng.github.io/" target="_blank">Jiapeng Zhu</a><sup>1</sup>,&nbsp;
+    <a href="https://dblp.org/pid/20/9594.html" target="_blank">Ruili Feng</a><sup>2,3</sup>,&nbsp;
+    <a href="http://shenyujun.github.io/" target="_blank">Yujun Shen</a><sup>4</sup>,&nbsp;
+    <a href="https://sites.google.com/site/zhaodeli" target="_blank">Deli Zhao</a><sup>2</sup>,&nbsp;
+    <a href="https://cn.linkedin.com/in/zheng-jun-zha-89943115" target="_blank">Zhengjun Zha</a><sup>3</sup>,&nbsp;
+    <a href="http://www.cs.columbia.edu/~jrzhou/" target="_blank">Jingren Zhou</a><sup>2</sup>,&nbsp;
+    <a href="https://cqf.io/" target="_blank">Qifeng Chen</a><sup>1</sup>
+
+  </div>
+  <div class="institution">
+    <sup>1</sup>Hong Kong University of Science and Technology &nbsp; &nbsp; &nbsp; &nbsp;
+    <sup>2</sup>Alibaba Group
+    <br/>
+    <sup>3</sup>University of Science and Technology of China &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <sup>4</sup>ByteDance Inc.
+  </div>
+  <div class="link">
+    [<a href="https://arxiv.org/pdf/2106.04488.pdf" target="_blank">Paper</a>]
+    [<a href="https://github.com/zhujiapeng/LowRankGAN" target="_blank">Code</a>]
+    [<a href="https://www.youtube.com/watch?v=WltRPecDq10" target="_blank">Demo</a>]
+  </div>
+  <div class="teaser">
+    <img src="./assets/teaser.jpg">
+  </div>
+</div>
+<!-- === Home Section Ends === -->
+
+
+<!-- === Overview Section Starts === -->
+<div class="section">
+  <div class="title">Overview</div>
+  <div class="body">
+    In this work, we propose <b>LowRankGAN</b> by introducing the <i>low-rank subspaces</i> of a
+    pre-trained generator, which enables local control of the GAN generation.
+    It mainly consists of three steps.
+    First, we relate the image region (e.g., eyes as the foreground and the rest as the background for a face image)
+    to the latent space via computing the Jacobian matrix on a pre-trained generator.
+    Second, we perform low-rank factorization on the resulting Jacobian to get
+    the principal space and the null space for the foreground and the background, respectively.
+    Finally, we project the principal space of the foreground onto the null space of the background,
+    resulting in the so-called <i>low-rank subspace</i>.
+    Through altering the latent codes along the directions within the low-rank subspace,
+    we manage to precisely control the foreground region yet barely affect the background region.
+    Interestingly, the subspaces derived from local areas in one image
+    can be convincingly applicable to other images.
+    Moreover, our LowRankGAN is highly robust to the image region for obtaining those subspaces.
+  </div>
+</div>
+<!-- === Overview Section Ends === -->
+
+
+<!-- === Result Section Starts === -->
+<div class="section">
+<div class="title">Results</div>
+  <div class="body">
+    The following results are created by manipulating the versatile semantics
+    found by <b>LowRankGAN</b>.
+
+    <p style="margin-top: 10pt; text-align:center; font-size:20px">FFHQ (StyleGAN2)<p>
+    <table width="100%" style="margin: 0pt auto; text-align: center; border-collapse: separate; border-spacing: 5pt;">
+      <tr>
+        <td><b>Eyes</b></td>
+        <td><b>Mouth</b></td>
+        <td><b>Nose</b></td>
+        <td><b>Hair</b></td>
+      </tr>
+      <tr>
+        <td><img src="./assets/ffhq_eyes.gif" width="90%"></img></td>
+        <td><img src="./assets/ffhq_mouth.gif" width="90%"></img></td>
+        <td><img src="./assets/ffhq_nose.gif" width="90%"></img></td>
+        <td><img src="./assets/ffhq_hair.gif" width="90%"></img></td>
+      </tr>
+    </table>
+
+    <p style="margin-top: 10pt; text-align:center; font-size:20px">MetFaces (StyleGAN2)<p>
+    <table width="100%" style="margin: 0pt auto; text-align: center; border-collapse: separate; border-spacing: 5pt;">
+      <tr>
+        <td><b>Eyes</b></td>
+        <td><b>Mouth</b></td>
+        <td><b>Nose</b></td>
+        <td><b>Hair</b></td>
+      </tr>
+      <tr>
+        <td><img src="./assets/metface_eyes.gif" width="90%"></img></td>
+        <td><img src="./assets/metface_mouth.gif" width="90%"></img></td>
+        <td><img src="./assets/metface_nose.gif" width="90%"></img></td>
+        <td><img src="./assets/metface_hair.gif" width="90%"></img></td>
+      </tr>
+    </table>
+
+    <p style="margin-top: 10pt; text-align:center; font-size:20px">Church (StyleGAN2)<p>
+    <table width="100%" style="margin: 0pt auto; text-align: center; border-collapse: separate; border-spacing: 5pt;">
+      <tr>
+        <td><b>Sky</b></td>
+        <td><img src="./assets/church_sky.gif" width="90%"></img></td>
+      </tr>
+      <tr>
+        <td><b>Grass</b></td>
+        <td><img src="./assets/church_grass.gif" width="90%"></img></td>
+      </tr>
+    </table>
+
+    <p style="margin-top: 10pt; text-align:center; font-size:20px">Car (StyleGAN2)<p>
+    <table width="100%" style="margin: 0pt auto; text-align: center; border-collapse: separate; border-spacing: 5pt;">
+      <tr>
+        <td><b>Body</b></td>
+        <td><img src="./assets/car_body.gif" width="90%"></img></td>
+      </tr>
+      <tr>
+        <td><b>Grass</b></td>
+        <td><img src="./assets/car_ground.gif" width="90%"></img></td>
+      </tr>
+    </table>
+
+    <p style="margin-top: 10pt; text-align:center; font-size:20px">Various Categories on BigGAN<p>
+    <table width="100%" style="margin: 0pt auto; text-align: center; border-collapse: separate; border-spacing: 5pt;">
+      <tr>
+        <td><b>Pose</b></td>
+        <td><img src="./assets/biggan_pose.gif" width="90%"></img></td>
+      </tr>
+      <tr>
+        <td><b>Size</b></td>
+        <td><img src="./assets/biggan_size.gif" width="90%"></img></td>
+      </tr>
+    </table>
+
+
+    <p style="margin-top: 10pt; text-align:center; font-size:20px">Full Demo Video<p>
+
+    <!-- Adjust the frame size based on the demo (Every project differs). -->
+    <div style="position: relative; padding-top: 50%; margin: 20pt auto; text-align: center;">
+      <iframe src="https://www.youtube.com/embed/WltRPecDq10" frameborder=0
+              style="position: absolute; top: 2.5%; left: 2.5%; width: 95%; height: 100%;"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+<!-- === Result Section Ends === -->
+
+
+<!-- === Reference Section Starts === -->
+<div class="section">
+  <div class="bibtex">BibTeX</div>
+<pre>
+  @inproceedings{zhu2021lowrankgan,
+    title     = {Low-Rank Subspaces in {GAN}s},
+    author    = {Zhu, Jiapeng and Feng, Ruili and Shen, Yujun and Zhao, Deli and Zha, Zhengjun and Zhou, Jingren and Chen, Qifeng},
+    booktitle = {Conference on Neural Information Processing Systems},
+    year      = {2021}
+  }
+
+</pre>
+
+
+<div class="ref">Related Work</div>
+
+<div class="citation">
+  <div class="image"><img src="./assets/spectual.jpg"></div>
+  <div class="comment">
+    <a href="https://arxiv.org/abs/1812.01161/" target="_blank">
+      Ramesh, Aditya and Choi, Youngduck and LeCun, Yann.
+      A spectral regularizer for unsupervised disentanglement.
+      ICML 2019.</a><br>
+    <b>Comment:</b>
+    Explores the leading right-singular vectors of the Jacobian of the generator.
+  </div>
+</div>
+<div class="citation">
+  <div class="image"><img src="./assets/interfacegan.jpg"></div>
+  <div class="comment">
+    <a href="https://genforce.github.io/interfacegan/" target="_blank">
+      Y. Shen, J. Gu, X. Tang, B. Zhou.
+      Interpreting the Latent Space of GANs for Semantic Face Editing.
+      CVPR 2020.</a><br>
+    <b>Comment:</b>
+    Interprets the face semantics emerging in the latent space of GANs with the help of off-the-shelf classifiers.
+  </div>
+</div>
+<div class="citation">
+  <div class="image"><img src="./assets/higan.jpg"></div>
+  <div class="comment">
+    <a href="https://genforce.github.io/higan/" target="_blank">
+      C. Yang, Y. Shen, B. Zhou.
+      Semantic Hierarchy Emerges in Deep Generative Representations for Scene Synthesis.
+      IJCV 2020.</a><br>
+    <b>Comment:</b>
+    Explores the emergent semantic hierarchy in scene synthesis models.
+  </div>
+</div>
+<div class="citation">
+  <div class="image"><img src="./assets/gan_latent_discovery.jpg"></div>
+  <div class="comment">
+    <a href="https://github.com/anvoynov/GanLatentDiscovery" target="_blank">
+      A. Voynov and A. Babenko.
+      Unsupervised Discovery of Interpretable Directions in the GAN Latent Space.
+      ICML 2020.</a><br>
+    <b>Comment:</b>
+    Interprets meaningful directions in GAN latent space by unsupervisedly training a direction reconstructor.
+  </div>
+</div>
+<div class="citation">
+  <div class="image"><img src="./assets/ganspace.jpg"></div>
+  <div class="comment">
+    <a href="https://github.com/harskish/ganspace" target="_blank">
+      E. Härkönen, A. Hertzmann, J. Lehtinen, S. Paris.
+      GANSpace: Discovering Interpretable GAN Controls.
+      NeurIPS 2020.</a><br>
+    <b>Comment:</b>
+    Unsupervisedly discovers the latent semantics learned by GANs using PCA.
+  </div>
+</div>
+<div class="citation">
+  <div class="image"><img src="./assets/sefa.jpg"></div>
+  <div class="comment">
+    <a href="https://github.com/harskish/ganspace" target="_blank">
+      Shen, Yujun and Zhou, Bolei.
+      Closed-Form Factorization of Latent Semantics in GANs.
+      CVPR2021.</a><br>
+    <b>Comment:</b>
+    Unsupervisedly factorizes the latent semantics in GANs.
+  </div>
+</div>
+
+<!-- === Reference Section Ends === -->
+
+
+</body>
+</html>
