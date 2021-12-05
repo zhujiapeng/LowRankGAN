@@ -58,7 +58,7 @@ def parse_args():
                         help='random seed')
     parser.add_argument('--name', type=str, default='lowrankgan',
                         help='The name to help save the file')
-    parser.add_argument('--latent_path', type=str, default=None,
+    parser.add_argument('--latent_path', type=str, default='',
                         help='The path to the existing latent codes.')
     return parser.parse_args()
 

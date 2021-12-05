@@ -43,7 +43,7 @@ def main():
     assert os.path.exists(args.jaco_path)
     Jacobians = np.load(args.jaco_path)
     image_size = Jacobians.shape[2]
-    w_dim = Jacobians[-1]
+    w_dim = Jacobians.shape[-1]
     assert args.region in COORDINATE_face, \
         f"{args.region} coordinate is not defined in " \
         f"COORDINATE_face. Please define this region first!"
