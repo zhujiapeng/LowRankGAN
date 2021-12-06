@@ -70,7 +70,7 @@ python manipulate.py $MODEL_PATH $DIRECTION
 @inproceedings{zhu2021lowrankgan,
   title     = {Low-Rank Subspaces in {GAN}s},
   author    = {Zhu, Jiapeng and Feng, Ruili and Shen, Yujun and Zhao, Deli and Zha, Zhengjun and Zhou, Jingren and Chen, Qifeng},
-  booktitle = {Conference on Neural Information Processing Systems},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
   year      = {2021}
 }
 ```
