@@ -17,7 +17,7 @@ In the repository, we propose *LowRankGAN* to locally control the image synthesi
 [[Project Page](https://zhujiapeng.github.io/LowRankGAN/)]
 [[Demo](https://www.youtube.com/watch?v=WltRPecDq10)]
 
-**[Stay Tuned] We are preparing the PyTorch code!**
+**NEWS: Please also find [this repo](https://github.com/zhujiapeng/resefa) for the Pytorch code!**
 
 | Examples of Local Editing |   |      |     |
 |  :-- |  :--  |  :-- | :-- |
